@@ -1,10 +1,9 @@
 package com.smartproject.backend.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
-
 import java.util.List;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
 @Data
 public class QuestionRequest {
@@ -20,6 +19,19 @@ public class QuestionRequest {
 
     private String explanation;
 
-    @NotEmpty
+    /*
+     * Required only for MCQ questions.
+     * Coding questions do not need options.
+     */
     private List<OptionRequest> options;
+
+    // Coding question support
+
+    private String questionType;
+
+    private String codeTemplate;
+
+    private Integer defaultLanguageId;
+
+    private String allowedLanguages;
 }

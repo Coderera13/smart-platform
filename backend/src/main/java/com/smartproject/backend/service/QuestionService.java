@@ -1,9 +1,9 @@
 package com.smartproject.backend.service;
 
+import java.util.List;
+
 import com.smartproject.backend.dto.QuestionRequest;
 import com.smartproject.backend.dto.QuestionResponse;
-
-import java.util.List;
 
 public interface QuestionService {
     QuestionResponse createQuestion(QuestionRequest request);

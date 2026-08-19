@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,6 +34,18 @@ public class User {
 
     @Column(unique = true)
     private String phone;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Column(nullable = false)
+    private String branch;
+
+    @Column(nullable = false)
+    private String section;
+
+    @Column(unique = true)
+    private String rollNo;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

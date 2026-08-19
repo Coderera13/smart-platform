@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartproject.backend.dto.AuthResponse;
+import com.smartproject.backend.dto.ForgotPasswordRequest;
 import com.smartproject.backend.dto.LoginRequest;
 import com.smartproject.backend.dto.RegisterRequest;
+import com.smartproject.backend.dto.ResetPasswordRequest;
 import com.smartproject.backend.service.AuthService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
 
     private final AuthService authService;
@@ -26,14 +26,38 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
-
-        return ResponseEntity.ok(authService.register(request));
+    public ResponseEntity<AuthResponse> register(
+            @RequestBody RegisterRequest request
+    ) {
+        return ResponseEntity.ok(
+                authService.register(request)
+        );
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<AuthResponse> login(
+            @RequestBody LoginRequest request
+    ) {
+        return ResponseEntity.ok(
+                authService.login(request)
+        );
+    }
 
-        return ResponseEntity.ok(authService.login(request));
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(
+            @RequestBody ForgotPasswordRequest request
+    ) {
+        return ResponseEntity.ok(
+                authService.forgotPassword(request)
+        );
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(
+            @RequestBody ResetPasswordRequest request
+    ) {
+        return ResponseEntity.ok(
+                authService.resetPassword(request)
+        );
     }
 }

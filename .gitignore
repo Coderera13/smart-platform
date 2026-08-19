@@ -1,0 +1,25 @@
+﻿# Node
+node_modules/
+frontend/node_modules/
+
+# Vite
+frontend/dist/
+
+# Java
+backend/target/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large archives
+*.zip
